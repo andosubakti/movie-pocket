@@ -31,14 +31,20 @@ export default function Home() {
         <meta name="description" content="Movie Library in your pocket" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <div className="flex flex-col items-center m-4">
-        <Header />
         {!trendingMovieLoading && trendingMovieData.results && (
           <div className="my-4">
             <h2 className="text-2xl font-bold mx-4-sm">
               Top 20 Movie This Week
             </h2>
-            <CardList data={trendingMovieData.results} />
+            <CardList
+              data={trendingMovieData.results}
+              loading={trendingMovieLoading}
+              onClick={(id, type) => {
+                router.push(`/detail/${type}/${id}`);
+              }}
+            />
           </div>
         )}
         {!trendingTvLoading && trendingTvData.results && (
@@ -46,7 +52,13 @@ export default function Home() {
             <h2 className="text-2xl font-bold mx-4-sm">
               Top 20 Tv Series This Week
             </h2>
-            <CardList data={trendingTvData.results} />
+            <CardList
+              data={trendingTvData.results}
+              loading={trendingTvLoading}
+              onClick={(id, type) => {
+                router.push(`/detail/${type}/${id}`);
+              }}
+            />
           </div>
         )}
       </div>

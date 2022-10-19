@@ -14,7 +14,9 @@ const SearchComponent = (props) => {
       enterButton={enterButton}
       size={size ? size : "large"}
       onSearch={(value) => {
-        onSearchHandler(value);
+        if (value) {
+          onSearchHandler(value);
+        }
       }}
       className="max-w-xl px-4"
     />

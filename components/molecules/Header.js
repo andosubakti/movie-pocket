@@ -5,8 +5,13 @@ import SearchComponent from "../atoms/Search";
 const Header = () => {
   const router = useRouter();
   return (
-    <>
-      <h1 className="font-bold text-3xl"> Movie Pocket </h1>
+    <div className="flex flex-col items-center m-4">
+      <h1
+        className="font-bold text-3xl cursor-pointer"
+        onClick={() => router.push("/")}
+      >
+        Movie Pocket
+      </h1>
       <h2 className="italic"> Movie Library in your pocket!</h2>
       <SearchComponent
         placeholder="Search Movies and Tv Shows"
@@ -15,7 +20,7 @@ const Header = () => {
           router.push(`/search/${value}`);
         }}
       />
-    </>
+    </div>
   );
 };
 
